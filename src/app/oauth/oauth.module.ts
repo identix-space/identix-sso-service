@@ -10,5 +10,6 @@ import { OauthService } from './oauth.service';
 @Module({
   imports: [PrismaModule, CryptoModule, AccountSessionModule],
   providers: [OauthResolver, OauthService],
+  exports: [OauthService],
 })
 export class OauthModule {}

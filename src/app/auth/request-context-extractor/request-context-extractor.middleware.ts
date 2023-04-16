@@ -24,7 +24,13 @@ export class RequestContextExtractorMiddleware implements NestMiddleware {
         where: {
           token,
         },
-        include: { account: true },
+        include: {
+          account: {
+            include: {
+              connections: true,
+            },
+          },
+        },
       });
 
       if (session) {

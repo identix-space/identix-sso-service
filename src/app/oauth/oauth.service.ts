@@ -11,9 +11,9 @@ import { PrismaService } from '@/common/prisma/prisma.service';
 interface IConnectionData {
   provider: OAuthProvider;
   uid: string;
-  email: string;
-  name: string;
-  avatar: string;
+  email?: string;
+  name?: string;
+  avatar?: string;
 }
 
 @Injectable()
