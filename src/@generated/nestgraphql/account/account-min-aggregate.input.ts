@@ -14,12 +14,6 @@ export class AccountMinAggregateInput {
     updatedAt?: true;
 
     @Field(() => Boolean, {nullable:true})
-    email?: true;
-
-    @Field(() => Boolean, {nullable:true})
-    passwordHash?: true;
-
-    @Field(() => Boolean, {nullable:true})
     status?: true;
 
     @Field(() => Boolean, {nullable:true})

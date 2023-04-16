@@ -3,6 +3,7 @@ import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
 import { AccountRole } from '../prisma/account-role.enum';
 import { AccountStatus } from '../prisma/account-status.enum';
+import { OAuthConnectionUncheckedUpdateManyWithoutAccountNestedInput } from '../o-auth-connection/o-auth-connection-unchecked-update-many-without-account-nested.input';
 
 @InputType()
 export class AccountUncheckedUpdateWithoutSessionsInput {
@@ -16,12 +17,6 @@ export class AccountUncheckedUpdateWithoutSessionsInput {
     @Field(() => Date, {nullable:true})
     updatedAt?: Date | string;
 
-    @Field(() => String, {nullable:true})
-    email?: string;
-
-    @Field(() => String, {nullable:true})
-    passwordHash?: string;
-
     @Field(() => [AccountRole], {nullable:true})
     roles?: Array<keyof typeof AccountRole>;
 
@@ -30,4 +25,7 @@ export class AccountUncheckedUpdateWithoutSessionsInput {
 
     @Field(() => String, {nullable:true})
     avatarUrl?: string;
+
+    @Field(() => OAuthConnectionUncheckedUpdateManyWithoutAccountNestedInput, {nullable:true})
+    connections?: OAuthConnectionUncheckedUpdateManyWithoutAccountNestedInput;
 }

@@ -14,12 +14,6 @@ export class AccountCountAggregateInput {
     updatedAt?: true;
 
     @Field(() => Boolean, {nullable:true})
-    email?: true;
-
-    @Field(() => Boolean, {nullable:true})
-    passwordHash?: true;
-
-    @Field(() => Boolean, {nullable:true})
     roles?: true;
 
     @Field(() => Boolean, {nullable:true})

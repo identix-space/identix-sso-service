@@ -84,17 +84,22 @@ export class AccountSessionService {
   }
 
   async getAccount(accountSession: AccountSession): Promise<Account> {
-    const result = await this.prisma.accountSession
-      .findUnique({
-        where: {
-          id: accountSession.id,
+    const result = await this.prisma.accountSession.findUnique({
+      where: {
+        id: accountSession.id,
+      },
+      include: {
+        account: {
+          include: {
+            connections: true,
+          },
         },
-      })
-      .account();
+      },
+    });
 
-    if (!result) {
+    if (!result?.account) {
       throw new Error('Account not found');
     }
-    return result;
+    return result.account;
   }
 }

@@ -15,12 +15,6 @@ export class AccountCountOrderByAggregateInput {
     updatedAt?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    email?: keyof typeof SortOrder;
-
-    @Field(() => SortOrder, {nullable:true})
-    passwordHash?: keyof typeof SortOrder;
-
-    @Field(() => SortOrder, {nullable:true})
     roles?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})

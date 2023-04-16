@@ -28,6 +28,7 @@ import { PrismaModule } from '@/common/prisma/prisma.module';
 import { ConnectorsModule } from './connectors/connectors.module';
 import { FileUploadModule } from './file-upload/file-upload.module';
 import { HealthModule } from './health/health.module';
+import { OauthModule } from './oauth/oauth.module';
 
 @Module({
   imports: [
@@ -67,6 +68,7 @@ import { HealthModule } from './health/health.module';
     FileUploadModule,
     HealthModule,
     ConnectorsModule,
+    OauthModule,
   ],
   providers: [
     {

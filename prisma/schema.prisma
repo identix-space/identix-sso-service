@@ -22,15 +22,36 @@ model Account {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  email        String        @unique
-  /// @HideField()
-  passwordHash String
-  roles        AccountRole[]
-  status       AccountStatus
+  roles  AccountRole[]
+  status AccountStatus
 
   avatarUrl String?
 
-  sessions AccountSession[]
+  sessions    AccountSession[]
+  connections OAuthConnection[]
+}
+
+model OAuthConnection {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  account   Account @relation(fields: [accountId], references: [id])
+  accountId Int
+
+  provider OAuthProvider
+  uid      String
+  email    String?
+  name     String?
+  avatar   String?
+
+  oAuthCodes OAuthCode[]
+
+  @@unique([provider, accountId])
+}
+
+enum OAuthProvider {
+  AUTH0
 }
 
 enum AccountStatus {
@@ -82,4 +103,17 @@ model AccountSession {
   ipAddr    String
   userAgent String?
   expiresAt DateTime
+}
+
+model OAuthCode {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  code      String   @unique
+  state     String?
+  expiresAt DateTime
+
+  oAuthConnection   OAuthConnection @relation(fields: [oAuthConnectionId], references: [id])
+  oAuthConnectionId Int
 }

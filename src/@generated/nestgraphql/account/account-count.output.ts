@@ -7,4 +7,7 @@ export class AccountCount {
 
     @Field(() => Int, {nullable:false})
     sessions?: number;
+
+    @Field(() => Int, {nullable:false})
+    connections?: number;
 }

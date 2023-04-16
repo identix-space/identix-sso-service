@@ -8,8 +8,6 @@ import { OneTimeCodeModule } from '@/app/one-time-code/one-time-code.module';
 import { CryptoModule } from '@/common/crypto/crypto.module';
 import { PrismaModule } from '@/common/prisma/prisma.module';
 
-import { AuthService } from './auth.service';
-
 @Module({
   imports: [
     CryptoModule,
@@ -19,7 +17,7 @@ import { AuthService } from './auth.service';
     OneTimeCodeModule,
     EmailModule,
   ],
-  providers: [AuthService, AuthResolver],
-  exports: [AuthService, AuthResolver],
+  providers: [AuthResolver],
+  exports: [AuthResolver],
 })
 export class AuthModule {}

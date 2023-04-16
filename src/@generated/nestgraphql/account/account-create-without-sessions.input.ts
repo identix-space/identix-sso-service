@@ -2,6 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { AccountRole } from '../prisma/account-role.enum';
 import { AccountStatus } from '../prisma/account-status.enum';
+import { OAuthConnectionCreateNestedManyWithoutAccountInput } from '../o-auth-connection/o-auth-connection-create-nested-many-without-account.input';
 
 @InputType()
 export class AccountCreateWithoutSessionsInput {
@@ -12,12 +13,6 @@ export class AccountCreateWithoutSessionsInput {
     @Field(() => Date, {nullable:true})
     updatedAt?: Date | string;
 
-    @Field(() => String, {nullable:false})
-    email!: string;
-
-    @Field(() => String, {nullable:false})
-    passwordHash!: string;
-
     @Field(() => [AccountRole], {nullable:true})
     roles?: Array<keyof typeof AccountRole>;
 
@@ -26,4 +21,7 @@ export class AccountCreateWithoutSessionsInput {
 
     @Field(() => String, {nullable:true})
     avatarUrl?: string;
+
+    @Field(() => OAuthConnectionCreateNestedManyWithoutAccountInput, {nullable:true})
+    connections?: OAuthConnectionCreateNestedManyWithoutAccountInput;
 }
