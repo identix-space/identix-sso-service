@@ -25,6 +25,7 @@ import { LoggerModule } from '@/common/logger/logger.module';
 import { LoggerServeModule } from '@/common/logger-serve/logger-serve.module';
 import { PrismaModule } from '@/common/prisma/prisma.module';
 
+import { ConnectorsModule } from './connectors/connectors.module';
 import { FileUploadModule } from './file-upload/file-upload.module';
 import { HealthModule } from './health/health.module';
 
@@ -65,6 +66,7 @@ import { HealthModule } from './health/health.module';
     LoggerServeModule,
     FileUploadModule,
     HealthModule,
+    ConnectorsModule,
   ],
   providers: [
     {
