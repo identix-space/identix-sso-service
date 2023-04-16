@@ -18,9 +18,6 @@ export class OAuthCode {
     @Field(() => String, {nullable:false})
     code!: string;
 
-    @Field(() => String, {nullable:true})
-    state!: string | null;
-
     @Field(() => Date, {nullable:false})
     expiresAt!: Date;
 

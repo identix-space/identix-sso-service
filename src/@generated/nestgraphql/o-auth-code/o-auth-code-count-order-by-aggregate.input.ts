@@ -18,9 +18,6 @@ export class OAuthCodeCountOrderByAggregateInput {
     code?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    state?: keyof typeof SortOrder;
-
-    @Field(() => SortOrder, {nullable:true})
     expiresAt?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})

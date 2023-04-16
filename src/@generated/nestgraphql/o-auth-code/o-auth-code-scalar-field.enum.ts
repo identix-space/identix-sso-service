@@ -5,7 +5,6 @@ export enum OAuthCodeScalarFieldEnum {
     createdAt = "createdAt",
     updatedAt = "updatedAt",
     code = "code",
-    state = "state",
     expiresAt = "expiresAt",
     oAuthConnectionId = "oAuthConnectionId"
 }

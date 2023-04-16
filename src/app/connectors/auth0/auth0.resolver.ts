@@ -20,7 +20,6 @@ export class Auth0Resolver {
   async getCode(
     @Args('code') code: string,
     @Args('redirectUri') redirectUri: string,
-    @Args('state') state: string,
   ) {
     const { accessToken } = await this.auth0Service.getTokens(
       code,
@@ -29,7 +28,7 @@ export class Auth0Resolver {
 
     const userInfo = await this.auth0Service.getUserInfo(accessToken);
 
-    return await this.oauthService.generateCode(state, {
+    return await this.oauthService.generateCode({
       provider: OAuthProvider.AUTH0,
       uid: userInfo.sub,
     });

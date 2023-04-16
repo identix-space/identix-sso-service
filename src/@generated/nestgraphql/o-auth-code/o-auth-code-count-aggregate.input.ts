@@ -17,9 +17,6 @@ export class OAuthCodeCountAggregateInput {
     code?: true;
 
     @Field(() => Boolean, {nullable:true})
-    state?: true;
-
-    @Field(() => Boolean, {nullable:true})
     expiresAt?: true;
 
     @Field(() => Boolean, {nullable:true})

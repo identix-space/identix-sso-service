@@ -111,7 +111,6 @@ model OAuthCode {
   updatedAt DateTime @updatedAt
 
   code      String   @unique
-  state     String?
   expiresAt DateTime
 
   oAuthConnection   OAuthConnection @relation(fields: [oAuthConnectionId], references: [id])

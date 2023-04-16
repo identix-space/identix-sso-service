@@ -33,7 +33,7 @@ describe('OauthService', () => {
       email: 'email',
     };
 
-    const code = await service.generateCode('state', connection);
+    const code = await service.generateCode(connection);
 
     expect(code).toBeDefined();
 

@@ -13,9 +13,6 @@ export class OAuthCodeCreateWithoutOAuthConnectionInput {
     @Field(() => String, {nullable:false})
     code!: string;
 
-    @Field(() => String, {nullable:true})
-    state?: string;
-
     @Field(() => Date, {nullable:false})
     expiresAt!: Date | string;
 }

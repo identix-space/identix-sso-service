@@ -17,9 +17,6 @@ export class OAuthCodeUncheckedUpdateManyInput {
     @Field(() => String, {nullable:true})
     code?: string;
 
-    @Field(() => String, {nullable:true})
-    state?: string;
-
     @Field(() => Date, {nullable:true})
     expiresAt?: Date | string;
 

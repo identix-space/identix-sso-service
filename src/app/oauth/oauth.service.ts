@@ -30,10 +30,7 @@ export class OauthService {
     return allowedRedirectUris?.includes(uri) ?? false;
   }
 
-  async generateCode(
-    state: string,
-    connection: IConnectionData,
-  ): Promise<string> {
+  async generateCode(connection: IConnectionData): Promise<string> {
     const code = await this.cryptoService.generateRandomString(
       RandomStringType.OAUTH_CODE,
     );
@@ -54,7 +51,6 @@ export class OauthService {
       ? this.prisma.oAuthCode.create({
           data: {
             code,
-            state,
             expiresAt,
             oAuthConnection: {
               connect: {
@@ -73,7 +69,6 @@ export class OauthService {
             oAuthCodes: {
               create: {
                 code,
-                state,
                 expiresAt,
               },
             },

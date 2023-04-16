@@ -18,9 +18,6 @@ export class OAuthCodeCountAggregate {
     code!: number;
 
     @Field(() => Int, {nullable:false})
-    state!: number;
-
-    @Field(() => Int, {nullable:false})
     expiresAt!: number;
 
     @Field(() => Int, {nullable:false})
