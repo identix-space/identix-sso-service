@@ -52,6 +52,7 @@ model OAuthConnection {
 
 enum OAuthProvider {
   AUTH0
+  UAEPASS
 }
 
 enum AccountStatus {

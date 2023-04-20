@@ -1,4 +1,4 @@
-FROM node:18-alpine3.17
+FROM node:16-alpine3.17
 RUN apk add python3
 WORKDIR /app
 COPY package*.json ./

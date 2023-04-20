@@ -5,6 +5,9 @@
   "author": "uxname",
   "private": true,
   "license": "MIT",
+  "engines": {
+    "node": "~16"
+  },
   "scripts": {
     "postinstall": "npm run prepare",
     "prebuild": "rimraf dist && npm run check",
