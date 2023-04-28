@@ -18,4 +18,7 @@ export class AccountMinAggregateInput {
 
     @Field(() => Boolean, {nullable:true})
     avatarUrl?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    did?: true;
 }

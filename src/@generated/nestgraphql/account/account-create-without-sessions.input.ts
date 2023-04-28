@@ -22,6 +22,9 @@ export class AccountCreateWithoutSessionsInput {
     @Field(() => String, {nullable:true})
     avatarUrl?: string;
 
+    @Field(() => String, {nullable:false})
+    did!: string;
+
     @Field(() => OAuthConnectionCreateNestedManyWithoutAccountInput, {nullable:true})
     connections?: OAuthConnectionCreateNestedManyWithoutAccountInput;
 }

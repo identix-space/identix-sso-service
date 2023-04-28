@@ -28,6 +28,9 @@ export class Account {
     @Field(() => String, {nullable:true})
     avatarUrl!: string | null;
 
+    @Field(() => String, {nullable:false})
+    did!: string;
+
     @Field(() => [AccountSession], {nullable:true})
     sessions?: Array<AccountSession>;
 

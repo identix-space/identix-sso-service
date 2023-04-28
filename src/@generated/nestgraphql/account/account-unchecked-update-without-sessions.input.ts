@@ -26,6 +26,9 @@ export class AccountUncheckedUpdateWithoutSessionsInput {
     @Field(() => String, {nullable:true})
     avatarUrl?: string;
 
+    @Field(() => String, {nullable:true})
+    did?: string;
+
     @Field(() => OAuthConnectionUncheckedUpdateManyWithoutAccountNestedInput, {nullable:true})
     connections?: OAuthConnectionUncheckedUpdateManyWithoutAccountNestedInput;
 }

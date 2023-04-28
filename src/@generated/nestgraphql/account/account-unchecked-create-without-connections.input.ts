@@ -26,6 +26,9 @@ export class AccountUncheckedCreateWithoutConnectionsInput {
     @Field(() => String, {nullable:true})
     avatarUrl?: string;
 
+    @Field(() => String, {nullable:false})
+    did!: string;
+
     @Field(() => AccountSessionUncheckedCreateNestedManyWithoutAccountInput, {nullable:true})
     sessions?: AccountSessionUncheckedCreateNestedManyWithoutAccountInput;
 }

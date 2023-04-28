@@ -24,4 +24,7 @@ export class AccountCreateManyInput {
 
     @Field(() => String, {nullable:true})
     avatarUrl?: string;
+
+    @Field(() => String, {nullable:false})
+    did!: string;
 }

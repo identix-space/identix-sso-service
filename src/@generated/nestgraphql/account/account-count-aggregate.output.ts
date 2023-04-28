@@ -24,5 +24,8 @@ export class AccountCountAggregate {
     avatarUrl!: number;
 
     @Field(() => Int, {nullable:false})
+    did!: number;
+
+    @Field(() => Int, {nullable:false})
     _all!: number;
 }

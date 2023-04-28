@@ -20,4 +20,7 @@ export class AccountMaxAggregate {
 
     @Field(() => String, {nullable:true})
     avatarUrl?: string;
+
+    @Field(() => String, {nullable:true})
+    did?: string;
 }

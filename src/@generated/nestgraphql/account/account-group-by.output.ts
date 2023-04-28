@@ -30,6 +30,9 @@ export class AccountGroupBy {
     @Field(() => String, {nullable:true})
     avatarUrl?: string;
 
+    @Field(() => String, {nullable:false})
+    did!: string;
+
     @Field(() => AccountCountAggregate, {nullable:true})
     _count?: AccountCountAggregate;
 

@@ -39,6 +39,7 @@ async function main() {
   // Create accounts
   await prisma.account.create({
     data: {
+      did: faker.random.alphaNumeric(42),
       roles: [AccountRole.ADMIN, AccountRole.USER],
       status: AccountStatus.ACTIVE,
       avatarUrl: 'https://example.com/avatar.png',
@@ -54,6 +55,7 @@ async function main() {
 
   await prisma.account.create({
     data: {
+      did: faker.random.alphaNumeric(42),
       roles: [AccountRole.USER],
       status: AccountStatus.ACTIVE,
       sessions: {

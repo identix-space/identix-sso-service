@@ -24,4 +24,7 @@ export class AccountUncheckedUpdateManyInput {
 
     @Field(() => String, {nullable:true})
     avatarUrl?: string;
+
+    @Field(() => String, {nullable:true})
+    did?: string;
 }

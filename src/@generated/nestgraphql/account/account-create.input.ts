@@ -23,6 +23,9 @@ export class AccountCreateInput {
     @Field(() => String, {nullable:true})
     avatarUrl?: string;
 
+    @Field(() => String, {nullable:false})
+    did!: string;
+
     @Field(() => AccountSessionCreateNestedManyWithoutAccountInput, {nullable:true})
     sessions?: AccountSessionCreateNestedManyWithoutAccountInput;
 

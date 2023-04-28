@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import { OAuthProvider } from '@/@generated/nestgraphql/prisma/o-auth-provider.enum';
 import { AccountSessionService } from '@/app/account-session/account-session.service';
+import { WalletsServiceClientService } from '@/app/wallets-service-client/wallets-service-client.service';
 import {
   CryptoService,
   RandomStringType,
@@ -22,6 +23,7 @@ export class OauthService {
     private readonly prisma: PrismaService,
     private readonly cryptoService: CryptoService,
     private readonly accountSessionService: AccountSessionService,
+    private readonly walletServiceClientService: WalletsServiceClientService,
   ) {}
 
   isRedirectUriAllowed(uri: string): boolean {
@@ -45,6 +47,11 @@ export class OauthService {
       include: {
         account: true,
       },
+    });
+
+    const did = await this.walletServiceClientService.createDid({
+      provider: connection.provider,
+      userId: connection.uid,
     });
 
     await (oAuthConnection
@@ -74,6 +81,7 @@ export class OauthService {
             },
             account: {
               create: {
+                did,
                 status: 'ACTIVE',
               },
             },

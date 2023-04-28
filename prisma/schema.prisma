@@ -29,6 +29,8 @@ model Account {
 
   sessions    AccountSession[]
   connections OAuthConnection[]
+
+  did String @unique
 }
 
 model OAuthConnection {

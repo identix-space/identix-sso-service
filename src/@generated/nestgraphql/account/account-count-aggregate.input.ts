@@ -23,5 +23,8 @@ export class AccountCountAggregateInput {
     avatarUrl?: true;
 
     @Field(() => Boolean, {nullable:true})
+    did?: true;
+
+    @Field(() => Boolean, {nullable:true})
     _all?: true;
 }

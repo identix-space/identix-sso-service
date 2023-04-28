@@ -6,7 +6,8 @@ export enum AccountScalarFieldEnum {
     updatedAt = "updatedAt",
     roles = "roles",
     status = "status",
-    avatarUrl = "avatarUrl"
+    avatarUrl = "avatarUrl",
+    did = "did"
 }
 
 

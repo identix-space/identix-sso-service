@@ -22,6 +22,9 @@ export class AccountUpdateWithoutConnectionsInput {
     @Field(() => String, {nullable:true})
     avatarUrl?: string;
 
+    @Field(() => String, {nullable:true})
+    did?: string;
+
     @Field(() => AccountSessionUpdateManyWithoutAccountNestedInput, {nullable:true})
     sessions?: AccountSessionUpdateManyWithoutAccountNestedInput;
 }
