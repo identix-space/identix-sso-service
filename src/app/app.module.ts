@@ -29,6 +29,7 @@ import { ConnectorsModule } from './connectors/connectors.module';
 import { FileUploadModule } from './file-upload/file-upload.module';
 import { HealthModule } from './health/health.module';
 import { OauthModule } from './oauth/oauth.module';
+import { WalletsServiceClientModule } from './wallets-service-client/wallets-service-client.module';
 
 @Module({
   imports: [
@@ -69,6 +70,7 @@ import { OauthModule } from './oauth/oauth.module';
     HealthModule,
     ConnectorsModule,
     OauthModule,
+    WalletsServiceClientModule,
   ],
   providers: [
     {

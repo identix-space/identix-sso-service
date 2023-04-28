@@ -9,6 +9,7 @@
     "node": "~16"
   },
   "scripts": {
+    "ts:gen": "graphql-codegen --require dotenv/config --config codegen.ts",
     "postinstall": "npm run prepare",
     "prebuild": "rimraf dist && npm run check",
     "build": "nest build",
@@ -75,6 +76,11 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@graphql-codegen/typescript-graphql-request": "^4.5.8",
+    "@graphql-codegen/typescript-operations": "^3.0.1",
+    "@graphql-codegen/add": "^4.0.1",
+    "@graphql-codegen/cli": "^3.2.1",
+    "@graphql-codegen/typescript": "3.0.1",
     "@faker-js/faker": "^7.6.0",
     "@jetbrains/eslint-config": "^5.4.1",
     "@nestjs/cli": "^9.4.0",

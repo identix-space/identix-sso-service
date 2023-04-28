@@ -1,0 +1,5 @@
+mutation GetOrCreateAccount($params: TAccountGetOrCreate!) {
+  getOrCreateAccount(params: $params) {
+    dids
+  }
+}

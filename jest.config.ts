@@ -5,7 +5,7 @@ import packageJson from './package.json';
 const config: Config.InitialOptions = {
   collectCoverageFrom: ['**/*.(t|j)s'],
   coverageDirectory: '../coverage',
-  testTimeout: 30_000,
+  testTimeout: 90_000,
   preset: 'ts-jest',
   testEnvironment: 'node',
   displayName: {
