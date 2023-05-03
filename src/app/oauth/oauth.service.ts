@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 
 import { OAuthProvider } from '@/@generated/nestgraphql/prisma/o-auth-provider.enum';
 import { AccountSessionService } from '@/app/account-session/account-session.service';
@@ -12,9 +13,7 @@ import { PrismaService } from '@/common/prisma/prisma.service';
 interface IConnectionData {
   provider: OAuthProvider;
   uid: string;
-  email?: string;
-  name?: string;
-  avatar?: string;
+  otherData?: Prisma.JsonValue;
 }
 
 @Injectable()
@@ -70,9 +69,7 @@ export class OauthService {
           data: {
             provider: connection.provider,
             uid: connection.uid,
-            email: connection.email,
-            name: connection.name,
-            avatar: connection.avatar,
+            otherData: connection.otherData || {},
             oAuthCodes: {
               create: {
                 code,

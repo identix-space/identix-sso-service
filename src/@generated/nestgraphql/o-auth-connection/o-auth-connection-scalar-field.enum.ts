@@ -7,9 +7,7 @@ export enum OAuthConnectionScalarFieldEnum {
     accountId = "accountId",
     provider = "provider",
     uid = "uid",
-    email = "email",
-    name = "name",
-    avatar = "avatar"
+    otherData = "otherData"
 }
 
 

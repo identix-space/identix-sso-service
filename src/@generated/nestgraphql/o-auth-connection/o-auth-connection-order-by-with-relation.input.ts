@@ -26,13 +26,7 @@ export class OAuthConnectionOrderByWithRelationInput {
     uid?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    email?: keyof typeof SortOrder;
-
-    @Field(() => SortOrder, {nullable:true})
-    name?: keyof typeof SortOrder;
-
-    @Field(() => SortOrder, {nullable:true})
-    avatar?: keyof typeof SortOrder;
+    otherData?: keyof typeof SortOrder;
 
     @Field(() => AccountOrderByWithRelationInput, {nullable:true})
     account?: AccountOrderByWithRelationInput;

@@ -23,13 +23,7 @@ export class OAuthConnectionCountAggregateInput {
     uid?: true;
 
     @Field(() => Boolean, {nullable:true})
-    email?: true;
-
-    @Field(() => Boolean, {nullable:true})
-    name?: true;
-
-    @Field(() => Boolean, {nullable:true})
-    avatar?: true;
+    otherData?: true;
 
     @Field(() => Boolean, {nullable:true})
     _all?: true;

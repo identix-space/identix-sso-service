@@ -2,6 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
 import { OAuthProvider } from '../prisma/o-auth-provider.enum';
+import { GraphQLJSON } from 'graphql-type-json';
 
 @InputType()
 export class OAuthConnectionUncheckedUpdateManyWithoutConnectionsInput {
@@ -21,12 +22,6 @@ export class OAuthConnectionUncheckedUpdateManyWithoutConnectionsInput {
     @Field(() => String, {nullable:true})
     uid?: string;
 
-    @Field(() => String, {nullable:true})
-    email?: string;
-
-    @Field(() => String, {nullable:true})
-    name?: string;
-
-    @Field(() => String, {nullable:true})
-    avatar?: string;
+    @Field(() => GraphQLJSON, {nullable:true})
+    otherData?: any;
 }

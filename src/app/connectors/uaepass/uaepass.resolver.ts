@@ -31,6 +31,22 @@ export class UaepassResolver {
     return await this.oauthService.generateCode({
       provider: OAuthProvider.UAEPASS,
       uid: userInfo.sub,
+      otherData: {
+        fullnameAR: userInfo.fullnameAR,
+        gender: userInfo.gender,
+        mobile: userInfo.mobile,
+        lastnameEN: userInfo.lastnameEN,
+        fullnameEN: userInfo.fullnameEN,
+        uuid: userInfo.uuid,
+        lastnameAR: userInfo.lastnameAR,
+        idn: userInfo.idn,
+        nationalityEN: userInfo.nationalityEN,
+        firstnameEN: userInfo.firstnameEN,
+        userType: userInfo.userType,
+        nationalityAR: userInfo.nationalityAR,
+        firstnameAR: userInfo.firstnameAR,
+        email: userInfo.email,
+      },
     });
   }
 }

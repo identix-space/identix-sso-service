@@ -29,13 +29,7 @@ export class OAuthConnectionOrderByWithAggregationInput {
     uid?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    email?: keyof typeof SortOrder;
-
-    @Field(() => SortOrder, {nullable:true})
-    name?: keyof typeof SortOrder;
-
-    @Field(() => SortOrder, {nullable:true})
-    avatar?: keyof typeof SortOrder;
+    otherData?: keyof typeof SortOrder;
 
     @Field(() => OAuthConnectionCountOrderByAggregateInput, {nullable:true})
     _count?: OAuthConnectionCountOrderByAggregateInput;

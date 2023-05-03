@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { OAuthProvider } from '../prisma/o-auth-provider.enum';
+import { GraphQLJSON } from 'graphql-type-json';
 import { AccountUpdateOneRequiredWithoutConnectionsNestedInput } from '../account/account-update-one-required-without-connections-nested.input';
 import { OAuthCodeUpdateManyWithoutOAuthConnectionNestedInput } from '../o-auth-code/o-auth-code-update-many-without-o-auth-connection-nested.input';
 
@@ -19,14 +20,8 @@ export class OAuthConnectionUpdateInput {
     @Field(() => String, {nullable:true})
     uid?: string;
 
-    @Field(() => String, {nullable:true})
-    email?: string;
-
-    @Field(() => String, {nullable:true})
-    name?: string;
-
-    @Field(() => String, {nullable:true})
-    avatar?: string;
+    @Field(() => GraphQLJSON, {nullable:true})
+    otherData?: any;
 
     @Field(() => AccountUpdateOneRequiredWithoutConnectionsNestedInput, {nullable:true})
     account?: AccountUpdateOneRequiredWithoutConnectionsNestedInput;

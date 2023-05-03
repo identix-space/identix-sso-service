@@ -21,13 +21,4 @@ export class OAuthConnectionMinAggregateInput {
 
     @Field(() => Boolean, {nullable:true})
     uid?: true;
-
-    @Field(() => Boolean, {nullable:true})
-    email?: true;
-
-    @Field(() => Boolean, {nullable:true})
-    name?: true;
-
-    @Field(() => Boolean, {nullable:true})
-    avatar?: true;
 }

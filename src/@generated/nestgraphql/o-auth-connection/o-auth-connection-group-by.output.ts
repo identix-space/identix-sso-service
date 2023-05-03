@@ -2,6 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
 import { OAuthProvider } from '../prisma/o-auth-provider.enum';
+import { GraphQLJSON } from 'graphql-type-json';
 import { OAuthConnectionCountAggregate } from './o-auth-connection-count-aggregate.output';
 import { OAuthConnectionAvgAggregate } from './o-auth-connection-avg-aggregate.output';
 import { OAuthConnectionSumAggregate } from './o-auth-connection-sum-aggregate.output';
@@ -29,14 +30,8 @@ export class OAuthConnectionGroupBy {
     @Field(() => String, {nullable:false})
     uid!: string;
 
-    @Field(() => String, {nullable:true})
-    email?: string;
-
-    @Field(() => String, {nullable:true})
-    name?: string;
-
-    @Field(() => String, {nullable:true})
-    avatar?: string;
+    @Field(() => GraphQLJSON, {nullable:false})
+    otherData!: any;
 
     @Field(() => OAuthConnectionCountAggregate, {nullable:true})
     _count?: OAuthConnectionCountAggregate;

@@ -22,13 +22,4 @@ export class OAuthConnectionMinOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
     uid?: keyof typeof SortOrder;
-
-    @Field(() => SortOrder, {nullable:true})
-    email?: keyof typeof SortOrder;
-
-    @Field(() => SortOrder, {nullable:true})
-    name?: keyof typeof SortOrder;
-
-    @Field(() => SortOrder, {nullable:true})
-    avatar?: keyof typeof SortOrder;
 }

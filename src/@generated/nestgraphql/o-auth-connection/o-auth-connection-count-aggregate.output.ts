@@ -24,13 +24,7 @@ export class OAuthConnectionCountAggregate {
     uid!: number;
 
     @Field(() => Int, {nullable:false})
-    email!: number;
-
-    @Field(() => Int, {nullable:false})
-    name!: number;
-
-    @Field(() => Int, {nullable:false})
-    avatar!: number;
+    otherData!: number;
 
     @Field(() => Int, {nullable:false})
     _all!: number;

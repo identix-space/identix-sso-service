@@ -2,6 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
 import { OAuthProvider } from '../prisma/o-auth-provider.enum';
+import { GraphQLJSON } from 'graphql-type-json';
 import { Account } from '../account/account.model';
 import { OAuthCode } from '../o-auth-code/o-auth-code.model';
 import { OAuthConnectionCount } from './o-auth-connection-count.output';
@@ -27,14 +28,8 @@ export class OAuthConnection {
     @Field(() => String, {nullable:false})
     uid!: string;
 
-    @Field(() => String, {nullable:true})
-    email!: string | null;
-
-    @Field(() => String, {nullable:true})
-    name!: string | null;
-
-    @Field(() => String, {nullable:true})
-    avatar!: string | null;
+    @Field(() => GraphQLJSON, {nullable:false})
+    otherData!: any;
 
     @Field(() => Account, {nullable:false})
     account?: Account;
