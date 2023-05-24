@@ -27,4 +27,28 @@ export class AccountService {
       data: input,
     });
   }
+
+  async deleteAccount(account: Account): Promise<boolean> {
+    await this.accountGateway.sendToAccount(account.id, 'accountDeleted', {});
+    await this.prisma.$transaction([
+      this.prisma.oAuthConnection.deleteMany({
+        where: {
+          account: {
+            id: account.id,
+          },
+        },
+      }),
+      this.prisma.accountSession.deleteMany({
+        where: {
+          accountId: account.id,
+        },
+      }),
+      this.prisma.account.delete({
+        where: {
+          id: account.id,
+        },
+      }),
+    ]);
+    return true;
+  }
 }

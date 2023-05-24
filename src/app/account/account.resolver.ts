@@ -55,4 +55,15 @@ export class AccountResolver {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return this.accountService.updateAccount(context.account!, input);
   }
+
+  // delete account mutation
+  @Mutation(() => Boolean)
+  @UseGuards(AuthGuard)
+  async deleteAccount(
+    @RequestContextDecorator() context: RequestContext,
+  ): Promise<boolean> {
+    // Should be because AuthGuard is used
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return this.accountService.deleteAccount(context.account!);
+  }
 }
