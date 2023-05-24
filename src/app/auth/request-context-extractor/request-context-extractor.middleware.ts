@@ -1,6 +1,7 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { NextFunction, Request, Response } from 'express';
 
+import { OAuthProvider } from '@/@generated/nestgraphql/prisma/o-auth-provider.enum';
 import { RequestContext } from '@/app/auth/request-context-extractor/interfaces';
 import {
   CryptoService,
@@ -50,7 +51,10 @@ export class RequestContextExtractorMiddleware implements NestMiddleware {
     if (requestContext.account?.connections?.length) {
       const newConnections = [];
       for (const connection of requestContext.account.connections) {
-        if (!connection.otherData.idn) {
+        if (
+          connection.provider === OAuthProvider.UAEPASS &&
+          !connection.otherData.idn
+        ) {
           connection.otherData.idn =
             await this.cryptoService.generateRandomString(
               RandomStringType.FAKE_IDN,
