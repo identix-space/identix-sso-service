@@ -6,6 +6,7 @@ import * as bcrypt from 'bcrypt';
 export enum RandomStringType {
   ACCESS_TOKEN = 'at_',
   OAUTH_CODE = 'code_',
+  FAKE_IDN = 'fake_idn_',
 }
 
 @Injectable()
@@ -33,7 +34,7 @@ export class CryptoService {
         if (error) {
           reject(error);
         } else {
-          resolve(buffer.toString('hex'));
+          resolve(prefix + buffer.toString('hex'));
         }
       });
     });

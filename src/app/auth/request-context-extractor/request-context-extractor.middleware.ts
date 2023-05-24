@@ -2,11 +2,18 @@ import { Injectable, NestMiddleware } from '@nestjs/common';
 import { NextFunction, Request, Response } from 'express';
 
 import { RequestContext } from '@/app/auth/request-context-extractor/interfaces';
+import {
+  CryptoService,
+  RandomStringType,
+} from '@/common/crypto/crypto.service';
 import { PrismaService } from '@/common/prisma/prisma.service';
 
 @Injectable()
 export class RequestContextExtractorMiddleware implements NestMiddleware {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly cryptoService: CryptoService,
+  ) {}
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async use(request: Request | any, response: Response, next: NextFunction) {
@@ -37,6 +44,21 @@ export class RequestContextExtractorMiddleware implements NestMiddleware {
         requestContext.account = session.account;
         requestContext.accountSession = session;
       }
+    }
+
+    // temporary hack: add random real estate id if it's not there
+    if (requestContext.account?.connections?.length) {
+      const newConnections = [];
+      for (const connection of requestContext.account.connections) {
+        if (!connection.otherData.idn) {
+          connection.otherData.idn =
+            await this.cryptoService.generateRandomString(
+              RandomStringType.FAKE_IDN,
+            );
+        }
+        newConnections.push(connection);
+      }
+      requestContext.account.connections = newConnections;
     }
 
     request.requestContext = requestContext;
