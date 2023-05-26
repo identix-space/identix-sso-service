@@ -21,8 +21,8 @@ import { WalletsServiceClientService } from '@/app/wallets-service-client/wallet
 @Resolver(() => Account)
 export class AccountResolver {
   constructor(
-    private accountSessionService: AccountSessionService,
-    private accountService: AccountService,
+    private readonly accountSessionService: AccountSessionService,
+    private readonly accountService: AccountService,
     private readonly walletsServiceClientService: WalletsServiceClientService,
   ) {}
 
