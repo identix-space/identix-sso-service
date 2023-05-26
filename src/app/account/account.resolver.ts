@@ -1,4 +1,4 @@
-import { UseGuards } from '@nestjs/common';
+import { HttpException, HttpStatus, UseGuards } from '@nestjs/common';
 import {
   Args,
   Mutation,
@@ -16,12 +16,14 @@ import { AccountSessionService } from '@/app/account-session/account-session.ser
 import { AuthGuard } from '@/app/auth/auth/auth.guard';
 import { RequestContext } from '@/app/auth/request-context-extractor/interfaces';
 import { RequestContextDecorator } from '@/app/request-context.decorator';
+import { WalletsServiceClientService } from '@/app/wallets-service-client/wallets-service-client.service';
 
 @Resolver(() => Account)
 export class AccountResolver {
   constructor(
     private accountSessionService: AccountSessionService,
     private accountService: AccountService,
+    private readonly walletsServiceClientService: WalletsServiceClientService,
   ) {}
 
   @Query(() => Account, { name: 'whoami' })
@@ -62,6 +64,12 @@ export class AccountResolver {
   async deleteAccount(
     @RequestContextDecorator() context: RequestContext,
   ): Promise<boolean> {
+    if (!context.account?.did) {
+      throw new HttpException('Account has no DID', HttpStatus.BAD_REQUEST);
+    }
+    await this.walletsServiceClientService.deleteAccountByDid(
+      context.account?.did,
+    );
     // Should be because AuthGuard is used
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return this.accountService.deleteAccount(context.account!);

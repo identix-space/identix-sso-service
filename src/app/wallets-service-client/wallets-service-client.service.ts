@@ -55,4 +55,21 @@ export class WalletsServiceClientService {
 
     return response.getOrCreateAccount.dids[0];
   }
+
+  async deleteAccountByDid(accountDid: string): Promise<boolean> {
+    this.logger.debug(`Delete account by DID: ${accountDid}`);
+
+    const response = await this.sdk.DeleteAccountByDid(
+      {
+        accountDid,
+      },
+      {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        Authorization: process.env.WALLETS_SERVICE_ACCESS_TOKEN!,
+      },
+    );
+    this.logger.debug('Delete account response:', response);
+
+    return response.deleteAccountByDid;
+  }
 }

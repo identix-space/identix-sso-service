@@ -3,3 +3,7 @@ mutation GetOrCreateAccount($params: TAccountGetOrCreate!) {
     dids
   }
 }
+
+mutation DeleteAccountByDid($accountDid: String!) {
+  deleteAccountByDid(accountDid: $accountDid)
+}

@@ -23,19 +23,13 @@ export enum Blockchains {
   Polygon = 'polygon'
 }
 
-export type ClaimsGroup = {
-  hmacHigh_claimGroup: Scalars['String'];
-  hmacHigh_groupDid: Scalars['String'];
-  signHighPart: Scalars['String'];
-  signLowPart: Scalars['String'];
-};
-
 export type Mutation = {
   __typename?: 'Mutation';
   deleteAccount: Scalars['Boolean'];
+  deleteAccountByDid: Scalars['Boolean'];
   deleteVC: Scalars['Boolean'];
   getOrCreateAccount: TGetOrCreateAccountResult;
-  issuerVC: Scalars['String'];
+  issueVC: Scalars['String'];
   requestVcVerification: Scalars['Boolean'];
   saveVC: VcStorageEntity;
   signMessage: SignMessageResponse;
@@ -49,6 +43,11 @@ export type MutationDeleteAccountArgs = {
 };
 
 
+export type MutationDeleteAccountByDidArgs = {
+  accountDid: Scalars['String'];
+};
+
+
 export type MutationDeleteVcArgs = {
   id: Scalars['Int'];
 };
@@ -59,9 +58,8 @@ export type MutationGetOrCreateAccountArgs = {
 };
 
 
-export type MutationIssuerVcArgs = {
-  claims: Array<ClaimsGroup>;
-  issuerDid: Scalars['String'];
+export type MutationIssueVcArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -107,7 +105,10 @@ export type Query = {
 
 
 export type QueryGetUserVCsArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
   userDid: Scalars['String'];
+  vcType?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -201,12 +202,24 @@ export type GetOrCreateAccountMutationVariables = Exact<{
 
 export type GetOrCreateAccountMutation = { __typename?: 'Mutation', getOrCreateAccount: { __typename?: 'TGetOrCreateAccountResult', dids: Array<string> } };
 
+export type DeleteAccountByDidMutationVariables = Exact<{
+  accountDid: Scalars['String'];
+}>;
+
+
+export type DeleteAccountByDidMutation = { __typename?: 'Mutation', deleteAccountByDid: boolean };
+
 
 export const GetOrCreateAccountDocument = gql`
     mutation GetOrCreateAccount($params: TAccountGetOrCreate!) {
   getOrCreateAccount(params: $params) {
     dids
   }
+}
+    `;
+export const DeleteAccountByDidDocument = gql`
+    mutation DeleteAccountByDid($accountDid: String!) {
+  deleteAccountByDid(accountDid: $accountDid)
 }
     `;
 
@@ -219,6 +232,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     GetOrCreateAccount(variables: GetOrCreateAccountMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetOrCreateAccountMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetOrCreateAccountMutation>(GetOrCreateAccountDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'GetOrCreateAccount', 'mutation');
+    },
+    DeleteAccountByDid(variables: DeleteAccountByDidMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteAccountByDidMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<DeleteAccountByDidMutation>(DeleteAccountByDidDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'DeleteAccountByDid', 'mutation');
     }
   };
 }
