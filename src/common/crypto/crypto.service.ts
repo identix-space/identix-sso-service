@@ -6,7 +6,7 @@ import * as bcrypt from 'bcrypt';
 export enum RandomStringType {
   ACCESS_TOKEN = 'at_',
   OAUTH_CODE = 'code_',
-  FAKE_IDN = 'fake_idn_',
+  FAKE_IDN = 'system_idn_',
 }
 
 @Injectable()
